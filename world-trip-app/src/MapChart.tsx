@@ -1,7 +1,7 @@
-import React,{memo} from "react";
+import React,{Dispatch, memo, SetStateAction} from "react";
 import {ComposableMap, Geographies,Geography, ZoomableGroup } from 'react-simple-maps';
 
-const MapChart = ({setTooltipContent})  => {
+const MapChart = ({setTooltipContent}: {setTooltipContent: Dispatch<SetStateAction<string>>})  => {
   return (
     <div data-tip="">
     <ComposableMap>
