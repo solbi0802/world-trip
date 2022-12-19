@@ -621,7 +621,8 @@
                     ],
                     "id": "CAN",
                     "properties": {
-                        "name": "Canada"
+                        "name": "Canada",
+                        "kor": "캐나다"
                     }
                 },
                 {
