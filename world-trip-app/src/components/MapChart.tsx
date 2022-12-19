@@ -1,9 +1,12 @@
-import React,{Dispatch, memo, SetStateAction} from "react";
+import React,{Dispatch, memo, SetStateAction, useState} from "react";
 import {ComposableMap, Geographies,Geography, ZoomableGroup } from 'react-simple-maps';
 
 const MapChart = ({setTooltipContent}: {setTooltipContent: Dispatch<SetStateAction<string>>})  => {
+  const [countryList, setCountryList] = useState<Array<string>>([])
   return (
     <div data-tip="">
+    <h2>세계 여행 기록</h2>
+    <div className="map-view">
     <ComposableMap>
       <ZoomableGroup>
          <Geographies geography="/features.json">
@@ -18,6 +21,10 @@ const MapChart = ({setTooltipContent}: {setTooltipContent: Dispatch<SetStateActi
                   onMouseLeave={() => {
                     setTooltipContent("");
                   }}
+                  onMouseDownCapture={() => {
+                    console.log('클릭',geo.properties.name)
+                    setCountryList([...countryList, geo.properties.name])
+                  }}
                   style={{
                     default: {
                       fill: "#b7b7bb",
@@ -28,9 +35,9 @@ const MapChart = ({setTooltipContent}: {setTooltipContent: Dispatch<SetStateActi
                       outline: "none"
                     },
                     pressed: {
-                      fill: "#5493b5",
+                      fill: "#E42",
                       outline: "none"
-                    }
+                    },
                   }}
                 />
               ))
@@ -41,6 +48,13 @@ const MapChart = ({setTooltipContent}: {setTooltipContent: Dispatch<SetStateActi
           </Marker> */}
         </ZoomableGroup>
     </ComposableMap>
+    </div>
+    <div className="trip-list">
+    <p>여행한 나라</p>
+    {countryList.join()}
+    </div>
+    <img src="/airplain-out.gif"/>
+    <img src="/airplain-in.gif"/>
     </div>
   );
 }
