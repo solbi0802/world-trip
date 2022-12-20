@@ -23,6 +23,7 @@ const MapChart = ({setTooltipContent}: {setTooltipContent: Dispatch<SetStateActi
                   }}
                   onMouseDownCapture={() => {
                     console.log('클릭',geo.properties.name)
+                    if(!countryList.includes(geo.properties.name)) 
                     setCountryList([...countryList, geo.properties.name])
                   }}
                   style={{
