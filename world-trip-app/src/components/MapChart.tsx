@@ -33,6 +33,10 @@ const MapChart = ({setTooltipContent}: {setTooltipContent: Dispatch<SetStateActi
                   onMouseLeave={() => setTooltipContent("")}
                   onClick={() => handleClick(geo)}
                   style={{
+                    default: {
+                      fill: "#b7b7bb",
+                      outline: "none"
+                    },
                     hover: {
                       fill: "#97a3ea",
                       outline: "none"
