@@ -1,9 +1,9 @@
 .App {
+  font-family: sans-serif;
   text-align: center;
 }
 
-map-view {
+.map-view {
   width: 80vh;
   height: 80vh;
 }
-
