@@ -1,6 +1,9 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .map-view {

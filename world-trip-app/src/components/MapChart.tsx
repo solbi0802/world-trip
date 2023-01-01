@@ -21,18 +21,20 @@ const MapChart = ({setTooltipContent}: {setTooltipContent: Dispatch<SetStateActi
             {({ geographies }) =>
               geographies.map((geo) => {
                 const isClicked = countryList === geo.properties.name;
-                console.log('isClicked',isClicked)
                 return (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill={isClicked ? "#E42": "#b7b7bb"}
                   onMouseEnter={() => {
                     setTooltipContent(geo.properties.kor ? `${geo.properties.kor}` : `${geo.properties.name}`);
                   }}
                   onMouseLeave={() => setTooltipContent("")}
                   onClick={() => handleClick(geo)}
                   style={{
+                    default: {
+                      fill: isClicked ? "#E42": "#b7b7bb",
+                      outline: "none"
+                    },
                     hover: {
                       fill: "#97a3ea",
                       outline: "none"
@@ -50,7 +52,14 @@ const MapChart = ({setTooltipContent}: {setTooltipContent: Dispatch<SetStateActi
     </ComposableMap>
     </div>
     <div className="trip-list">
-    <p>여행한 나라</p>
+    {
+      countryList.length > 0 && (
+      <>
+      <h3>여행한 나라</h3>
+      <p>{countryList.join()}</p>
+      </>
+      )
+    }
     </div>
     </div>
   );
